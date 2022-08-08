@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import Checkbox from "../../components/Checkbox";
 import AppContext from "../../contexts/app";
 
 const Step = () => {
@@ -13,7 +14,6 @@ const Step = () => {
         // TODO: take care of "I don't shave" edge case
         setStepOneOptions(
             stepOneOptions.map((option) =>
-                // Here you accept a id argument to the function and replace it with hard coded 🤪 2, to make it dynamic.
                 option.name === name
                     ? { ...option, checked: !option.checked } : { ...option }
             )
@@ -44,7 +44,7 @@ const Step = () => {
     }, [stepOneOptions])
 
     return (
-        <>
+        <div className="min-h-screen">
             <h1 className="text-3xl font-bold underline">
                 What do you shave?
             </h1>
@@ -52,17 +52,9 @@ const Step = () => {
             <div className="mb-5">
 
                 {stepOneOptions.map((option, index) => (
-                    <button key={index} onClick={handleCheck} name={option.name} type="button" className={option.checked ? 'checkbox bg-gray-500 hover:bg-gray-700 text-white font-bold py-8 px-12 rounded border-solid border-2 border-blue-600' : 'checkbox bg-gray-500 hover:bg-gray-700 text-white font-bold py-8 px-12 rounded mr-5'}>
-                        {option.name}
-                        {option.checked ?
 
-                            <div className='checkbox-icon'>
-                                <svg className="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /></svg>
-                            </div>
-                            :
-                            ''
-                        }
-                    </button>
+                    <Checkbox key={index} onClick={handleCheck} name={option.name} type="button" checked={option.checked} />
+
                 ))}
 
             </div>
@@ -71,7 +63,7 @@ const Step = () => {
                 Next
             </button>
 
-        </>
+        </div>
     )
 }
 
