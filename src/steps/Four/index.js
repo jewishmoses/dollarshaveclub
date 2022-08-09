@@ -1,5 +1,5 @@
 import './index.css';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import AppContext from '../../contexts/app';
 import Checkbox from '../../components/Checkbox';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +9,7 @@ const Step = () => {
     const { stepFourOptions, setStepFourOptions, setStep } = useContext(AppContext);
     const [disabled, setDisabled] = useState(true);
     const { t } = useTranslation();
+    const stepRef = useRef(null);
 
     const handleCheck = (event) => {
 
@@ -44,10 +45,12 @@ const Step = () => {
 
         setDisabled(true);
 
-    }, [stepFourOptions])
+    }, [stepFourOptions]);
+
+    useEffect(() => { stepRef.current.scrollIntoView()  }, []);
 
     return (
-        <div className='min-h-screen mx-auto w-3/4 text-center'>
+        <div ref={stepRef} className='h-screen mx-auto w-3/4 text-center p-10'>
             <h1 className="text-3xl mb-5 font-bold">
                 {t("Are you worried about any of the following issues?")}
             </h1>
@@ -66,7 +69,7 @@ const Step = () => {
 
             </div>
 
-            <button onClick={() => setStep(4)} type="button" className='disabled:bg-gray-500 bg-gray-700 text-white font-bold py-8 px-12 rounded mr-5' disabled={disabled}>
+            <button onClick={() => setStep(5)} type="button" className='disabled:bg-gray-500 bg-gray-700 text-white font-bold py-8 px-12 rounded mr-5' disabled={disabled}>
                 {t("Next")}
             </button>
         </div>

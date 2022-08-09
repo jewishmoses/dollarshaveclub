@@ -43,7 +43,7 @@ const Step = () => {
 
         setDisabled(true);
 
-    }, [stepOneOptions])
+    }, [stepOneOptions]);
 
     return (
         <div className="min-h-screen mx-auto w-3/4 text-center">
