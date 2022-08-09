@@ -46,7 +46,7 @@ const Step = () => {
     }, [stepOneOptions]);
 
     return (
-        <div className="min-h-screen mx-auto w-3/4 text-center">
+        <div className="mt-5 md:mt-0 md:min-h-screen mx-auto w-3/4 text-center md:p-10">
             <h1 className="text-3xl mb-5 font-bold">
                 {t("What do you shave?")}
             </h1>
@@ -64,7 +64,6 @@ const Step = () => {
             <button onClick={() => setStep(2)} type="button" className='disabled:bg-gray-500 bg-gray-700 text-white font-bold py-8 px-12 rounded mr-5' disabled={disabled}>
                 {t("Next")}
             </button>
-
         </div>
     )
 }

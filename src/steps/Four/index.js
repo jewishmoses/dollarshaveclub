@@ -3,10 +3,11 @@ import { useContext, useEffect, useState, useRef } from 'react';
 import AppContext from '../../contexts/app';
 import Checkbox from '../../components/Checkbox';
 import { useTranslation } from 'react-i18next';
+import { scrollToComponent } from '../../utilities';
 
 const Step = () => {
 
-    const { stepFourOptions, setStepFourOptions, setStep } = useContext(AppContext);
+    const { stepFourOptions, setStepFourOptions, setStep, step } = useContext(AppContext);
     const [disabled, setDisabled] = useState(true);
     const { t } = useTranslation();
     const stepRef = useRef(null);
@@ -47,10 +48,10 @@ const Step = () => {
 
     }, [stepFourOptions]);
 
-    useEffect(() => { stepRef.current.scrollIntoView()  }, []);
+    useEffect(() => { scrollToComponent(step, 4, stepRef); });
 
     return (
-        <div ref={stepRef} className='h-screen mx-auto w-3/4 text-center p-10'>
+        <div ref={stepRef} className='mt-5 md:mt-0 md:min-h-screen mx-auto w-3/4 text-center md:p-10'>
             <h1 className="text-3xl mb-5 font-bold">
                 {t("Are you worried about any of the following issues?")}
             </h1>

@@ -15,7 +15,6 @@ const defaultStepOneOptions = [
     { name: 'Legs', checked: false, },
     { name: 'Neck only', checked: false, },
     { name: 'Other', checked: false, },
-    { name: "I don't shave", checked: false },
 ];
 
 const defaultStepTwoOptions = [

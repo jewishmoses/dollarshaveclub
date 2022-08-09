@@ -3,10 +3,11 @@ import { FaMinus as MinusIcon, FaPlus as PlusIcon } from "react-icons/fa";
 import AppContext from "../../contexts/app";
 import { useTranslation } from "react-i18next";
 import defaultProducts from './products.json';
+import { scrollToComponent } from '../../utilities';
 
 const Step = () => {
 
-    const { stepOneOptions, stepTwoOptions, stepThreeOptions, stepFourOptions } = useContext(AppContext);
+    const { stepOneOptions, stepTwoOptions, stepThreeOptions, stepFourOptions, step } = useContext(AppContext);
     const [products, setProducts] = useState(defaultProducts);
     const [total, setTotal] = useState(0);
     const { t } = useTranslation();
@@ -80,36 +81,37 @@ const Step = () => {
 
     };
 
-    useEffect(() => { stepRef.current.scrollIntoView()  }, []);
+
+    useEffect(() => { scrollToComponent(step, 5, stepRef); });
 
     return (
-        <div ref={stepRef} className="min-h-screen text-center p-10">
+        <div ref={stepRef} className="mt-5 md:mt-0 md:min-h-screen text-center md:p-10">
 
             <h3 className="text-3xl">{t("Review your plan below.")}</h3>
             <small className="text-1xl">{t("(We think we nailed it.)")}</small>
 
             <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
 
-                {products.map((item) => (
+                {products.map((product) => (
 
                     <div class="bg-white p-5 max-w-sm rounded overflow-hidden shadow-lg">
-                        <img class="object-contain h-48 w-96" src={item.image} alt="Sunset in the mountains" />
+                        <img class="object-contain h-48 w-96" src={product.image} alt={product.name} />
                         <div class="px-6 py-4">
-                            <div class="font-bold text-xl mb-2">{t(item.name)}</div>
-                            <small>{item.price}₪</small>
+                            <div class="font-bold text-xl mb-2">{t(product.name)}</div>
+                            <small>{product.price}₪</small>
                             <hr className="my-2"/>
                             <div className="">
                                 <div class="flex items-center">
 
-                                    <button onClick={() => updateItemQuantity(item.id, 1)} class="inline-flex items-center p-1 text-sm font-medium text-gray-500 rounded-full border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button">
+                                    <button onClick={() => updateItemQuantity(product.id, 1)} class="inline-flex items-center p-1 text-sm font-medium text-gray-500 rounded-full border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button">
                                         <PlusIcon />
                                     </button>
 
                                     <div>
-                                        <input type="number" class="mx-1 bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1" value={item.quantity} />
+                                        <input type="number" class="mx-1 bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1" value={product.quantity} />
                                     </div>
 
-                                    <button onClick={() => updateItemQuantity(item.id, -1)} class="inline-flex items-center p-1 text-sm font-medium text-gray-500 rounded-full border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button">
+                                    <button onClick={() => updateItemQuantity(product.id, -1)} class="inline-flex items-center p-1 text-sm font-medium text-gray-500 rounded-full border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button">
                                         <MinusIcon />
                                     </button>
 
@@ -121,8 +123,8 @@ const Step = () => {
                 ))}
             </div>
 
-            <div className="bg-white w-2/4 rounded p-10 mb-10">
-                <span className="text-2xl">Total price: {total}₪</span>
+            <div className="bg-white w-full md:w-2/4 rounded p-10 mb-10">
+                <span className="text-2xl">{t("Total price")}: {total}₪</span>
             </div>
 
         </div>
