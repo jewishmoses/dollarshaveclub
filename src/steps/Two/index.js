@@ -48,11 +48,11 @@ const Step = () => {
 
 
     return (
-        <div className='min-h-screen'>
-            <h1 className="text-3xl font-bold underline">
+        <div className='min-h-screen mx-auto w-3/4 text-center'>
+            <h1 className="text-3xl mb-5 font-bold">
                 How often do you shave?
             </h1>
-            <small>Select one. (required)</small>
+            <small className='mb-5 block'>Select one. (required)</small>
             <div className="mb-5">
 
                 {stepTwoOptions.map((option, index) => (

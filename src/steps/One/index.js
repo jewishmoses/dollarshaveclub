@@ -44,11 +44,11 @@ const Step = () => {
     }, [stepOneOptions])
 
     return (
-        <div className="min-h-screen">
-            <h1 className="text-3xl font-bold underline">
+        <div className="min-h-screen mx-auto w-3/4 text-center">
+            <h1 className="text-3xl mb-5 font-bold">
                 What do you shave?
             </h1>
-            <small>Select all that apply. (required)</small>
+            <small className="mb-5 block">Select all that apply. (required)</small>
             <div className="mb-5">
 
                 {stepOneOptions.map((option, index) => (

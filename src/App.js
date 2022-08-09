@@ -60,20 +60,45 @@ function App() {
     }
 
 
-    const Step = () => {
+    const Steps = () => {
 
-        switch (step) {
+        if (step == 2) {
 
-            case 2: return <StepTwo />;
-            case 3: return <StepThree />;
-            case 4: return <StepFour />;
-            default: return <StepOne />;
+            return <>
+                <StepOne />
+                <StepTwo />
+            </>
         }
+
+        if (step == 3) {
+
+            return <>
+                <StepOne />
+                <StepTwo />
+                <StepThree />
+            </>
+
+        }
+
+        if (step == 4) {
+
+            return <>
+                <StepOne />
+                <StepTwo />
+                <StepFour />
+            </>
+
+        }
+
+        return <StepOne />
+
     }
 
     return (
-        <AppContext.Provider value={context}>
-            <Step />
+        <AppContext.Provider value={context}>\
+            <div className='container mx-auto'>
+                <Steps />
+            </div>
         </AppContext.Provider>
     );
 }

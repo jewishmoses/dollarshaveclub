@@ -1,3 +1,7 @@
+body { 
+    background: #f9f3ea;
+}
+
 .checkbox-icon {
     position: absolute;
     top: 5px;

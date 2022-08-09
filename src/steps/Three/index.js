@@ -46,11 +46,11 @@ const Step = () => {
     }, [stepThreeOptions])
 
     return (
-        <div className='m-h-screen'>
-            <h1 className="text-3xl font-bold underline">
+        <div className='m-h-screen mx-auto w-3/4 text-center'>
+            <h1 className="text-3xl mb-5 font-bold">
                 Any problems when you shave?
             </h1>
-            <small>Select all that apply. (required)</small>
+            <small className='mb-5 block'>Select all that apply. (required)</small>
             <div className="mb-5">
 
                 {stepThreeOptions.map((option, index) => (
