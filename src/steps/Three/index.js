@@ -2,11 +2,13 @@ import './index.css';
 import { useContext, useEffect, useState } from 'react';
 import AppContext from '../../contexts/app';
 import Checkbox from '../../components/Checkbox';
+import { useTranslation } from 'react-i18next';
 
 const Step = () => {
 
     const { stepThreeOptions, setStepThreeOptions, setStep } = useContext(AppContext);
     const [disabled, setDisabled] = useState(true);
+    const { t } = useTranslation();
 
     const handleCheck = (event) => {
 
@@ -48,21 +50,21 @@ const Step = () => {
     return (
         <div className='m-h-screen mx-auto w-3/4 text-center'>
             <h1 className="text-3xl mb-5 font-bold">
-                Any problems when you shave?
+                {t("Any problems when you shave?")}
             </h1>
-            <small className='mb-5 block'>Select all that apply. (required)</small>
+            <small className='mb-5 block'>{t("Select all that apply. (required)")}</small>
             <div className="mb-5">
 
                 {stepThreeOptions.map((option, index) => (
 
-                    <Checkbox key={index} onClick={handleCheck} name={option.name} type="button" checked={option.checked} />
+                    <Checkbox key={index} onClick={handleCheck} name={option.name} title={t(option.name)} type="button" checked={option.checked} />
 
                 ))}
 
             </div>
 
             <button onClick={() => setStep(4)} type="button" className='disabled:bg-gray-500 bg-gray-700 text-white font-bold py-8 px-12 rounded mr-5' disabled={disabled}>
-                Next
+                {t("Next")}
             </button>
         </div>
     );

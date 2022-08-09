@@ -62,7 +62,7 @@ function App() {
 
     const Steps = () => {
 
-        if (step == 2) {
+        if (step === 2) {
 
             return <>
                 <StepOne />
@@ -70,7 +70,7 @@ function App() {
             </>
         }
 
-        if (step == 3) {
+        if (step === 3) {
 
             return <>
                 <StepOne />
@@ -80,7 +80,7 @@ function App() {
 
         }
 
-        if (step == 4) {
+        if (step === 4) {
 
             return <>
                 <StepOne />
