@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "image": "/images/blades.avif",
+        "name": "Razor Blades",
+        "price": 20,
+        "quantity": 2
+    },
+    {
+        "id": 2,
+        "image": "/images/butter.avif",
+        "name": "Shave Butter",
+        "price": 30,
+        "quantity": 1
+    },
+    {
+        "id": 3,
+        "image": "/images/handle.avif",
+        "name": "Razor Handle",
+        "price": 40,
+        "quantity": 1
+    },
+    {
+        "id": 4,
+        "image": "/images/hydrating.avif",
+        "name": "Hydrating Face Wash",
+        "price": 50,
+        "quantity": 0
+    }
+]

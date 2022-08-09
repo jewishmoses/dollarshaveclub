@@ -4,6 +4,7 @@ import StepOne from './steps/One';
 import StepTwo from './steps/Two';
 import StepThree from './steps/Three';
 import StepFour from './steps/Four';
+import StepFive from './steps/Five';
 import AppContext from './contexts/app';
 
 const defaultStepOneOptions = [
@@ -85,7 +86,20 @@ function App() {
             return <>
                 <StepOne />
                 <StepTwo />
+                <StepThree />
                 <StepFour />
+            </>
+
+        }
+
+        if (step === 5) {
+
+            return <>
+                <StepOne />
+                <StepTwo />
+                <StepThree />
+                <StepFour />
+                <StepFive />
             </>
 
         }
